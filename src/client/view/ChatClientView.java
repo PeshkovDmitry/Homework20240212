@@ -1,5 +1,7 @@
 package client.view;
 
+import client.presenter.Presenter;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -12,17 +14,26 @@ public class ChatClientView extends JFrame implements View {
     private int SEND_BUTTON_WIDTH = 100;
     private int SEND_BUTTON_HEIGHT = 30;
 
+    private Presenter presenter;
+    private JTextArea textArea;
+    private SettingsWindow settingsWindow;
+    private SendMessagePanel sendMessagePanel;
+
+
     public ChatClientView() {
+
         setSize(WIDTH, HEIGHT);
         setLocation(HORIZONTAL_POSITION, VERTICAL_POSITION);
-        setDefaultCloseOperation(EXIT_ON_CLOSE);
-//        setResizable(false);
-        SettingsWindow settingsWindow = new SettingsWindow();
-        JTextArea textArea = new JTextArea();
-        SendMessagePanel sendMessagePanel = new SendMessagePanel();
+        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setResizable(false);
+
+        settingsWindow = new SettingsWindow();
+        textArea = new JTextArea();
+        sendMessagePanel = new SendMessagePanel();
         add(settingsWindow, BorderLayout.NORTH);
         add(textArea);
         add(sendMessagePanel, BorderLayout.SOUTH);
+        showSettingsWindow();
     }
 
     @Override
@@ -32,16 +43,26 @@ public class ChatClientView extends JFrame implements View {
 
     @Override
     public void printMessage(String message) {
+        textArea.append(message);
+    }
 
+    @Override
+    public void setPresenter(Presenter presenter) {
+        this.presenter = presenter;
+    }
+
+    @Override
+    public void showSettingsWindow() {
+        settingsWindow.setVisible(true);
+    }
+
+    @Override
+    public void hideSettingsWindow() {
+        settingsWindow.setVisible(false);
     }
 
 
     private class SettingsWindow extends JPanel {
-
-        private String host;
-        private Integer port;
-        private String nickName;
-        private String password;
 
         public SettingsWindow() {
             super(new GridLayout(2,3));
@@ -50,6 +71,13 @@ public class ChatClientView extends JFrame implements View {
             JTextField nickNameField = new JTextField("petya");
             JPasswordField passwordField = new JPasswordField("password");
             JButton loginButton = new JButton("login");
+            loginButton.addActionListener(e -> {
+                presenter.setHost(hostField.getText());
+                presenter.setPort(portField.getText());
+                presenter.setNickname(nickNameField.getText());
+                presenter.setPassword(passwordField.getPassword());
+                presenter.connect();
+            });
             add(hostField);
             add(portField);
             add(new JPanel());
@@ -57,42 +85,19 @@ public class ChatClientView extends JFrame implements View {
             add(passwordField);
             add(loginButton);
         }
-
-        public void show() {
-            this.setVisible(true);
-        }
-
-        public void hide() {
-            setVisible(false);
-        }
-
-        public String getHost() {
-            return host;
-        }
-
-        public Integer getPort() {
-            return port;
-        }
-
-        public String getNickName() {
-            return nickName;
-        }
-
-        public String getPassword() {
-            return password;
-        }
-
     }
 
     private class SendMessagePanel extends JPanel{
 
         public SendMessagePanel() {
-            JTextField newMessagePane = new JTextField();
-            newMessagePane.setPreferredSize(new Dimension(WIDTH - SEND_BUTTON_WIDTH, SEND_BUTTON_HEIGHT));
+            super(new GridLayout(1,2));
+            JTextField newMessageField = new JTextField();
             JButton sendButton = new JButton("send");
-            sendButton.setPreferredSize(new Dimension(SEND_BUTTON_WIDTH, SEND_BUTTON_HEIGHT));
-            add(newMessagePane);
-            add(sendButton, BorderLayout.EAST);
+            sendButton.addActionListener(e -> {
+                presenter.sendMessage(newMessageField.getText());
+            });
+            add(newMessageField);
+            add(sendButton);
         }
 
     }

@@ -4,11 +4,13 @@ public interface Presenter {
 
     void setHost(String host);
 
-    void setPort(Integer port);
+    void setPort(String port);
 
     void setNickname(String nickName);
 
-    void setPassword(String password);
+    void setPassword(char[] password);
+
+    void run();
 
     void connect();
 
