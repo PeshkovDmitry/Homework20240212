@@ -2,7 +2,7 @@ package client.view;
 
 public interface View {
 
-    void show();
+    void showWindow();
 
     void printMessage(String message);
 
