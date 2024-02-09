@@ -16,5 +16,7 @@ public interface Presenter {
 
     void sendMessage(String message);
 
+    void printMessage(String message);
+
 
 }

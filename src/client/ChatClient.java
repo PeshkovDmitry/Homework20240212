@@ -26,11 +26,8 @@ public class ChatClient implements Client {
 
     @Override
     public void printMessage(String message) {
-
+        presenter.printMessage(message);
     }
 
-    @Override
-    public void setServer(Server server) {
 
-    }
 }

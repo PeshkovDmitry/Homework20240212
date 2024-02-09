@@ -58,11 +58,24 @@ public class ChatClientPresenter implements Presenter {
 
     @Override
     public void connect() {
-        server.addSubscriber(client);
+        if (server.checkClient(nickName, password)) {
+            server.addSubscriber(client);
+            view.hideSettingsWindow();
+            view.printMessage(server.getHistory());
+        } else {
+            view.printMessage("Не удалось подключиться к серверу");
+        }
     }
 
     @Override
     public void sendMessage(String message) {
+        if (server.checkClient(nickName, password)) {
+            server.publish(model.getFormattedMessage(message, nickName));
+        }
+    }
 
+    @Override
+    public void printMessage(String message) {
+        view.printMessage(message);
     }
 }

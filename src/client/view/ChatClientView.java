@@ -11,8 +11,6 @@ public class ChatClientView extends JFrame implements View {
     private static final int WIDTH = 500;
     private static final int HORIZONTAL_POSITION = 100;
     private static final int VERTICAL_POSITION = 100;
-    private int SEND_BUTTON_WIDTH = 100;
-    private int SEND_BUTTON_HEIGHT = 30;
 
     private Presenter presenter;
     private JTextArea textArea;
@@ -26,6 +24,7 @@ public class ChatClientView extends JFrame implements View {
         setLocation(HORIZONTAL_POSITION, VERTICAL_POSITION);
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
+        setTitle("Chat client");
 
         settingsWindow = new SettingsWindow();
         textArea = new JTextArea();
@@ -89,15 +88,25 @@ public class ChatClientView extends JFrame implements View {
 
     private class SendMessagePanel extends JPanel{
 
+        private JTextField newMessageField;
+
         public SendMessagePanel() {
             super(new GridLayout(1,2));
-            JTextField newMessageField = new JTextField();
+            newMessageField = new JTextField();
+            newMessageField.addActionListener(e -> {
+                sendMessage();
+            });
             JButton sendButton = new JButton("send");
             sendButton.addActionListener(e -> {
-                presenter.sendMessage(newMessageField.getText());
+                sendMessage();
             });
             add(newMessageField);
             add(sendButton);
+        }
+
+        private void sendMessage() {
+            presenter.sendMessage(newMessageField.getText());
+            newMessageField.setText("");
         }
 
     }

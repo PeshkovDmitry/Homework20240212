@@ -6,6 +6,4 @@ public interface Client {
 
     void printMessage(String message);
 
-    void setServer(Server server);
-
 }

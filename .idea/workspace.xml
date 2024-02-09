@@ -4,13 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Продумал, как мог, интерфейсы">
+    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Начал прорабатывать логику клиента">
+      <change afterPath="$PROJECT_DIR$/src/server/view/ChatServerView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ChatClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/Client.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/presenter/ChatClientPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/presenter/ChatClientPresenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/presenter/Presenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/view/ChatClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/ChatClientView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ChatServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +80,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707468224956</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Начал прорабатывать логику клиента">
+      <created>1707487186197</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1707487186197</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -93,6 +104,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Начальный коммит" />
     <MESSAGE value="Продумал, как мог, интерфейсы" />
-    <option name="LAST_COMMIT_MESSAGE" value="Продумал, как мог, интерфейсы" />
+    <MESSAGE value="Начал прорабатывать логику клиента" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начал прорабатывать логику клиента" />
   </component>
 </project>
