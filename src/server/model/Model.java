@@ -4,10 +4,8 @@ import client.Client;
 
 public interface Model {
 
-    void addSubscriber(Client client);
-
-    void publish(String message);
-
     String getHistory();
+
+    void addToHistory(String message);
 
 }

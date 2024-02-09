@@ -13,7 +13,7 @@ public class ChatServerPresenter implements Presenter{
 
     private View view;
 
-    private boolean run;
+    private boolean run = false;
 
     List<Client> subscribers;
 
@@ -22,7 +22,6 @@ public class ChatServerPresenter implements Presenter{
         this.model = model;
         this.view = view;
         this.view.setPresenter(this);
-        run = false;
     }
 
     @Override
@@ -33,13 +32,17 @@ public class ChatServerPresenter implements Presenter{
     @Override
     public void start() {
         run = true;
-        publish(getHistory());
+        view.printMessage(getHistory());
         publish("Сервер запущен!");
     }
 
     @Override
     public void stop() {
         run = false;
+        for (Client c: subscribers) {
+            c.disconnect();
+        }
+        view.clear();
     }
 
     @Override
@@ -51,6 +54,7 @@ public class ChatServerPresenter implements Presenter{
     public void publish(String message) {
         if (message != null && !message.isEmpty()) {
             view.printMessage(message);
+            model.addToHistory(message);
             for (Client c: subscribers) {
                 c.printMessage(message);
             }
@@ -65,6 +69,6 @@ public class ChatServerPresenter implements Presenter{
 
     @Override
     public String getHistory() {
-        return null;
+        return model.getHistory();
     }
 }

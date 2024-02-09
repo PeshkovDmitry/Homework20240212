@@ -30,9 +30,16 @@ public class ChatClient implements Client {
     }
 
     @Override
+    public void disconnect() {
+        presenter.disconnect();
+    }
+
+    @Override
     public String getName() {
         return presenter.getNickname();
     }
+
+
 
 
 }

@@ -20,5 +20,7 @@ public interface Presenter {
 
     void printMessage(String message);
 
+    void disconnect();
+
 
 }

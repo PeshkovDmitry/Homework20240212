@@ -8,6 +8,8 @@ public interface View {
 
     void printMessage(String message);
 
+    void clear();
+
     void setPresenter(Presenter presenter);
 
     void showSettingsWindow();

@@ -33,9 +33,10 @@ public class ChatClientView extends JFrame implements View {
         settingsWindow = new SettingsWindow();
         textArea = new JTextArea();
         textArea.setEditable(false);
+
         sendMessagePanel = new SendMessagePanel();
         add(settingsWindow, BorderLayout.NORTH);
-        add(textArea);
+        add(new JScrollPane(textArea));
         add(sendMessagePanel, BorderLayout.SOUTH);
         showSettingsWindow();
     }
@@ -57,6 +58,11 @@ public class ChatClientView extends JFrame implements View {
     }
 
     @Override
+    public void clear() {
+        textArea.setText("");
+    }
+
+    @Override
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
     }
@@ -64,11 +70,13 @@ public class ChatClientView extends JFrame implements View {
     @Override
     public void showSettingsWindow() {
         settingsWindow.setVisible(true);
+        sendMessagePanel.disableButton();
     }
 
     @Override
     public void hideSettingsWindow() {
         settingsWindow.setVisible(false);
+        sendMessagePanel.enableButton();
     }
 
 
@@ -101,19 +109,31 @@ public class ChatClientView extends JFrame implements View {
 
         private JTextField newMessageField;
 
+        private JButton sendButton;
+
         public SendMessagePanel() {
-            super(new GridLayout(1,2));
+            super(new BorderLayout());
             newMessageField = new JTextField();
             newMessageField.addActionListener(e -> {
                 sendMessage();
             });
-            JButton sendButton = new JButton("send");
+            sendButton = new JButton("send");
+            sendButton.setEnabled(false);
             sendButton.addActionListener(e -> {
                 sendMessage();
             });
             add(newMessageField);
-            add(sendButton);
+            add(sendButton, BorderLayout.EAST);
         }
+
+        public void enableButton() {
+            sendButton.setEnabled(true);
+        }
+
+        public void disableButton() {
+            sendButton.setEnabled(false);
+        }
+
 
         private void sendMessage() {
             if (!newMessageField.getText().isEmpty()) {

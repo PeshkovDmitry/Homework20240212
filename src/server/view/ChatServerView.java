@@ -26,7 +26,7 @@ public class ChatServerView extends JFrame implements View {
 
         textArea = new JTextArea();
         textArea.setEditable(false);
-        add(textArea);
+        add(new JScrollPane(textArea));
         JPanel buttonsPanel = new JPanel(new GridLayout(1,2));
         JButton startButton = new JButton("Start");
         startButton.addActionListener(e -> {
@@ -52,11 +52,18 @@ public class ChatServerView extends JFrame implements View {
     }
 
     @Override
+    public void clear() {
+        textArea.setText("");
+    }
+
+    @Override
     public void printMessage(String message) {
-        if (textArea.getText().isEmpty()) {
-            textArea.append(message);
-        } else {
-            textArea.append("\n\r" + message);
+        if (message != null && !message.isEmpty()) {
+            if (textArea.getText().isEmpty()) {
+                textArea.append(message);
+            } else {
+                textArea.append("\n\r" + message);
+            }
         }
     }
 }

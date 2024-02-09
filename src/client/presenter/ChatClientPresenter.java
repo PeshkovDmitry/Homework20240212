@@ -23,6 +23,8 @@ public class ChatClientPresenter implements Presenter {
 
     private String password;
 
+    private boolean isRunning = false;
+
     public ChatClientPresenter(View view, Model model, Server server, Client client) {
         this.model = model;
         this.view = view;
@@ -64,10 +66,11 @@ public class ChatClientPresenter implements Presenter {
     @Override
     public void connect() {
         if (server.checkRunning() && server.checkClient(nickName, password)) {
-            server.addSubscriber(client);
             view.hideSettingsWindow();
             view.printMessage(server.getHistory());
             view.printMessage("Вы успешно подключились!");
+            server.addSubscriber(client);
+            isRunning = true;
         } else {
             view.printMessage("Не удалось подключиться к серверу");
         }
@@ -82,6 +85,15 @@ public class ChatClientPresenter implements Presenter {
 
     @Override
     public void printMessage(String message) {
-        view.printMessage(message);
+        if (isRunning) {
+            view.printMessage(message);
+        }
+    }
+
+    @Override
+    public void disconnect() {
+        view.clear();
+        view.showSettingsWindow();
+        isRunning = false;
     }
 }
