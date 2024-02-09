@@ -6,4 +6,6 @@ public interface Client {
 
     void printMessage(String message);
 
+    String getName();
+
 }

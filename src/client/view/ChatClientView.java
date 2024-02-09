@@ -4,6 +4,7 @@ import client.presenter.Presenter;
 
 import javax.swing.*;
 import java.awt.*;
+import java.util.Random;
 
 public class ChatClientView extends JFrame implements View {
 
@@ -21,13 +22,17 @@ public class ChatClientView extends JFrame implements View {
     public ChatClientView() {
 
         setSize(WIDTH, HEIGHT);
-        setLocation(HORIZONTAL_POSITION, VERTICAL_POSITION);
+        setLocation(
+                HORIZONTAL_POSITION + new Random().nextInt(50),
+                VERTICAL_POSITION + new Random().nextInt(50)
+        );
         setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
         setResizable(false);
         setTitle("Chat client");
 
         settingsWindow = new SettingsWindow();
         textArea = new JTextArea();
+        textArea.setEditable(false);
         sendMessagePanel = new SendMessagePanel();
         add(settingsWindow, BorderLayout.NORTH);
         add(textArea);
@@ -42,7 +47,13 @@ public class ChatClientView extends JFrame implements View {
 
     @Override
     public void printMessage(String message) {
-        textArea.append(message);
+        if (message != null && !message.isEmpty()) {
+            if (textArea.getText().isEmpty()) {
+                textArea.append(message);
+            } else {
+                textArea.append("\n\r" + message);
+            }
+        }
     }
 
     @Override
@@ -105,8 +116,10 @@ public class ChatClientView extends JFrame implements View {
         }
 
         private void sendMessage() {
-            presenter.sendMessage(newMessageField.getText());
-            newMessageField.setText("");
+            if (!newMessageField.getText().isEmpty()) {
+                presenter.sendMessage(newMessageField.getText());
+                newMessageField.setText("");
+            }
         }
 
     }

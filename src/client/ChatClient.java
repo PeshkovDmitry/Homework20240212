@@ -29,5 +29,10 @@ public class ChatClient implements Client {
         presenter.printMessage(message);
     }
 
+    @Override
+    public String getName() {
+        return presenter.getNickname();
+    }
+
 
 }

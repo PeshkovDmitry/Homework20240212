@@ -47,6 +47,11 @@ public class ChatClientPresenter implements Presenter {
     }
 
     @Override
+    public String getNickname() {
+        return nickName;
+    }
+
+    @Override
     public void setPassword(char[] password) {
         this.password = password.toString();
     }
@@ -58,10 +63,11 @@ public class ChatClientPresenter implements Presenter {
 
     @Override
     public void connect() {
-        if (server.checkClient(nickName, password)) {
+        if (server.checkRunning() && server.checkClient(nickName, password)) {
             server.addSubscriber(client);
             view.hideSettingsWindow();
             view.printMessage(server.getHistory());
+            view.printMessage("Вы успешно подключились!");
         } else {
             view.printMessage("Не удалось подключиться к серверу");
         }

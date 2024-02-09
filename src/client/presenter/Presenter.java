@@ -8,6 +8,8 @@ public interface Presenter {
 
     void setNickname(String nickName);
 
+    String getNickname();
+
     void setPassword(char[] password);
 
     void run();

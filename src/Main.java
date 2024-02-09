@@ -10,9 +10,7 @@ public class Main {
 
         Server server = new ChatServer();
         Client client1 = new ChatClient(server);
-//        Client client2 = new ChatClient(server);
-
-
+        Client client2 = new ChatClient(server);
 
     }
 

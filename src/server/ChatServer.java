@@ -1,7 +1,9 @@
 package server;
 
 import client.Client;
+import server.model.ChatServerModel;
 import server.model.Model;
+import server.presenter.ChatServerPresenter;
 import server.presenter.Presenter;
 import server.view.ChatServerView;
 import server.view.View;
@@ -15,8 +17,10 @@ public class ChatServer implements Server {
     private Presenter presenter;
 
     public ChatServer() {
+        model = new ChatServerModel();
         view = new ChatServerView();
-        view.showWindow();
+        presenter = new ChatServerPresenter(model,view);
+        presenter.showWindow();
     }
 
     @Override
@@ -25,8 +29,13 @@ public class ChatServer implements Server {
     }
 
     @Override
+    public boolean checkRunning() {
+        return presenter.checkRunning();
+    }
+
+    @Override
     public void addSubscriber(Client client) {
-        System.out.println(client);
+        presenter.addSubscriber(client);
     }
 
     @Override
@@ -36,6 +45,6 @@ public class ChatServer implements Server {
 
     @Override
     public String getHistory() {
-        return "История...";
+        return presenter.getHistory();
     }
 }
