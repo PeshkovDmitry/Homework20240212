@@ -1,16 +1,15 @@
 import client.ChatClient;
-import client.Client;
-import client.view.ChatClientView;
 import server.ChatServer;
-import server.Server;
+
+import java.io.IOException;
 
 public class Main {
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
 
-        Server server = new ChatServer();
-        Client client1 = new ChatClient(server);
-        Client client2 = new ChatClient(server);
+        new ChatServer();
+        new ChatClient();
+//        new ChatClient();
 
     }
 

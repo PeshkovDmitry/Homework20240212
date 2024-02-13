@@ -30,11 +30,11 @@ public class ChatServerView extends JFrame implements View {
         JPanel buttonsPanel = new JPanel(new GridLayout(1,2));
         JButton startButton = new JButton("Start");
         startButton.addActionListener(e -> {
-            presenter.start();
+            presenter.startServer();
         });
         JButton stopButton = new JButton("Stop");
         stopButton.addActionListener(e -> {
-            presenter.stop();
+            presenter.stopServer();
         });
         buttonsPanel.add(startButton);
         buttonsPanel.add(stopButton);
@@ -49,11 +49,6 @@ public class ChatServerView extends JFrame implements View {
     @Override
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
-    }
-
-    @Override
-    public void clear() {
-        textArea.setText("");
     }
 
     @Override

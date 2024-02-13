@@ -38,7 +38,7 @@ public class ChatClientView extends JFrame implements View {
         add(settingsWindow, BorderLayout.NORTH);
         add(new JScrollPane(textArea));
         add(sendMessagePanel, BorderLayout.SOUTH);
-        showSettingsWindow();
+        settingsWindow.setVisible(true);
     }
 
     @Override
@@ -55,11 +55,6 @@ public class ChatClientView extends JFrame implements View {
                 textArea.append("\n\r" + message);
             }
         }
-    }
-
-    @Override
-    public void clear() {
-        textArea.setText("");
     }
 
     @Override
@@ -85,16 +80,24 @@ public class ChatClientView extends JFrame implements View {
         public SettingsWindow() {
             super(new GridLayout(2,3));
             JTextField hostField = new JTextField("127.0.0.1");
-            JTextField portField = new JTextField("8189");
+            JTextField portField = new JTextField("4004");
             JTextField nickNameField = new JTextField("petya");
             JPasswordField passwordField = new JPasswordField("password");
             JButton loginButton = new JButton("login");
             loginButton.addActionListener(e -> {
-                presenter.setHost(hostField.getText());
-                presenter.setPort(portField.getText());
-                presenter.setNickname(nickNameField.getText());
-                presenter.setPassword(passwordField.getPassword());
-                presenter.connect();
+                boolean connected =
+                        presenter.connect(
+                                hostField.getText(),
+                                portField.getText(),
+                                nickNameField.getText(),
+                                passwordField.getPassword().toString()
+                        );
+                setVisible(!connected);
+                if (connected) {
+                    sendMessagePanel.enableButton();
+                } else {
+                    sendMessagePanel.disableButton();
+                }
             });
             add(hostField);
             add(portField);

@@ -6,39 +6,20 @@ import client.presenter.ChatClientPresenter;
 import client.presenter.Presenter;
 import client.view.ChatClientView;
 import client.view.View;
-import server.Server;
 
-public class ChatClient implements Client {
+public class ChatClient {
 
-    private Server server;
     private View view;
     private Model model;
     private Presenter presenter;
 
 
-    public ChatClient(Server server) {
-        this.server = server;
+    public ChatClient() {
         this.view = new ChatClientView();
         this.model = new ChatClientModel();
-        this.presenter = new ChatClientPresenter(view, model, server, this);
-        presenter.run();
+        this.presenter = new ChatClientPresenter(view, model);
+        presenter.onButtonClicked();
     }
-
-    @Override
-    public void printMessage(String message) {
-        presenter.printMessage(message);
-    }
-
-    @Override
-    public void disconnect() {
-        presenter.disconnect();
-    }
-
-    @Override
-    public String getName() {
-        return presenter.getNickname();
-    }
-
 
 
 

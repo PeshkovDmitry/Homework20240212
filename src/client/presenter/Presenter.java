@@ -2,25 +2,22 @@ package client.presenter;
 
 public interface Presenter {
 
-    void setHost(String host);
+    void onButtonClicked();
 
-    void setPort(String port);
-
-    void setNickname(String nickName);
-
-    String getNickname();
-
-    void setPassword(char[] password);
-
-    void run();
-
-    void connect();
-
-    void sendMessage(String message);
+    boolean connect(String host, String port, String nickName, String password);
 
     void printMessage(String message);
 
-    void disconnect();
+
+//    void run();
+//
+//    void connect();
+//
+    void sendMessage(String message);
+//
+//    void printMessage(String message);
+//
+//    void disconnect();
 
 
 }

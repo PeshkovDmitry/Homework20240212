@@ -1,22 +1,13 @@
 package server.presenter;
 
-import client.Client;
-
 public interface Presenter {
 
-    void showWindow();
+    void onButtonClicked();
 
-    void start();
+    void startServer();
 
-    void stop();
+    void stopServer();
 
-    boolean checkRunning();
-
-    void publish(String message);
-
-    void addSubscriber(Client client);
-
-    String getHistory();
-
+    void printMessage(String message);
 
 }
