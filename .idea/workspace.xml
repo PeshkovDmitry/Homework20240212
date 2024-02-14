@@ -4,26 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Проодолжение работ">
+    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Начал прорабатывать реализацию через сокеты">
+      <change afterPath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/model/MultiThreadServer.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/ChatClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/ChatClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/Client.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/presenter/ChatClientPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/presenter/ChatClientPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/presenter/Presenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/ChatClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/ChatClientView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/View.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/ChatServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ChatServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/Server.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/model/ChatServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/ChatServerModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/presenter/ChatServerPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/presenter/ChatServerPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/presenter/Presenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/view/ChatServerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/view/ChatServerView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,9 +49,35 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="server.model" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="" />
       <recent name="server.view" />
     </key>
+  </component>
+  <component name="RunManager" selected="Application.Main">
+    <configuration name="ClientMain" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ClientMain" />
+      <module name="Homework20240208" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Main" />
+      <module name="Homework20240208" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.ClientMain" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -118,7 +132,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707513567130</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Начал прорабатывать реализацию через сокеты">
+      <created>1707858588141</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1707858588141</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -139,6 +160,7 @@
     <MESSAGE value="Начал прорабатывать логику сервера" />
     <MESSAGE value="Осталось сделать историю переписки" />
     <MESSAGE value="Функционал реализован" />
-    <option name="LAST_COMMIT_MESSAGE" value="Функционал реализован" />
+    <MESSAGE value="Начал прорабатывать реализацию через сокеты" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начал прорабатывать реализацию через сокеты" />
   </component>
 </project>

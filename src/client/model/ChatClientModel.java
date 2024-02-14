@@ -35,6 +35,11 @@ public class ChatClientModel implements Model{
             BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
             out.write(message);
             out.flush();
+//            String serverWord = in.readLine();
+//            presenter.printMessage(serverWord);
+//            socket.close();
+//            in.close();
+//            out.close();
         } catch (IOException e) {
             presenter.printMessage("Не удалось отправить сообщение");
         }

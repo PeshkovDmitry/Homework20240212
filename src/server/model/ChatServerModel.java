@@ -5,50 +5,47 @@ import server.presenter.Presenter;
 import java.io.*;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 
 public class ChatServerModel implements Model {
 
     private static final String FILENAME = "history.txt";
 
-    private static final int PORT = 4004;
-
     private Presenter presenter;
 
-    private ServerSocket serverSocket;
-
-    private Socket socket;
+    private ServerSocket server;
 
     @Override
     public boolean isActive() {
-        return !serverSocket.isClosed();
+        return !server.isClosed();
     }
 
     @Override
     public void startServer() {
-        try {
-            serverSocket = new ServerSocket(PORT);
-            presenter.printMessage("Сервер запущен!");
-            new Thread(() -> {
-                try {
-                    socket = serverSocket.accept();
-                    presenter.printMessage("Кто-то подключился!");
-                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+        MultiThreadServer multiThreadServer = new MultiThreadServer(presenter);
+        new Thread(multiThreadServer).start();
+        server = multiThreadServer.getServerSocket();
+
+
+//                    socket = serverSocket.accept();
+//                    presenter.printMessage("Кто-то подключился!");
+//                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 //                    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-                    String word = in.readLine();
-                    System.out.println("Что-то пришло");
-                    presenter.printMessage(word);
+//                    String word = in.readLine();
+//                    System.out.println("Что-то пришло");
+//                    presenter.printMessage(word);
 //                    out.write("You say " + word);
 //                    out.flush();
-
-                } catch (IOException e) {}
-            }).start();
-        } catch (IOException e) {}
+//                    in.close();
+//                    out.close();
+//                    serverSocket.close();
     }
 
     @Override
     public void stopServer() {
         try {
-            serverSocket.close();
+            server.close();
             presenter.printMessage("Сервер остановлен!");
         } catch (IOException e) {}
     }
@@ -57,6 +54,8 @@ public class ChatServerModel implements Model {
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
     }
+
+
 
     @Override
     public String getHistory() {
