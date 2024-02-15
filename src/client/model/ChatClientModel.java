@@ -11,11 +11,34 @@ public class ChatClientModel implements Model{
 
     private Presenter presenter;
 
+    private String currentMessage = "Initial message";
+
     @Override
     public boolean connect(String host, int port) {
         try {
             socket =  new Socket(host, port);
             presenter.printMessage("Вы успешно подключились!");
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    try (DataOutputStream oos = new DataOutputStream(socket.getOutputStream());
+                         DataInputStream ois = new DataInputStream(socket.getInputStream())) {
+                        while (true) {
+                            oos.writeUTF(currentMessage);
+                            oos.flush();
+                            Thread.sleep(100);
+                            String in = ois.readUTF();
+                            presenter.printMessage(in);
+                            Thread.sleep(100);
+                        }
+                    } catch (IOException | InterruptedException e) {
+                        e.printStackTrace();
+                        presenter.printMessage("Не удалось отправить сообщение");
+                    }
+                }
+            }).start();
+
+
             return true;
         } catch (IOException e) {
             presenter.printMessage("Не удалось подключиться к серверу");
@@ -30,21 +53,7 @@ public class ChatClientModel implements Model{
 
     @Override
     public void sendMessage(String message) {
-        try (
-                DataOutputStream oos = new DataOutputStream(socket.getOutputStream());
-                DataInputStream ois = new DataInputStream(socket.getInputStream())) {
-            int i = 0;
-            while (i < 5) {
-                oos.writeUTF("clientCommand " + i);
-                oos.flush();
-                String in = ois.readUTF();
-//                System.out.println(in);
-                presenter.printMessage(in);
-                i++;
-            }
-        } catch (IOException e) {
-            presenter.printMessage("Не удалось отправить сообщение");
-        }
+        currentMessage = message;
     }
 
     @Override

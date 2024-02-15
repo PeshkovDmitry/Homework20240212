@@ -4,6 +4,7 @@ import server.presenter.Presenter;
 
 import java.io.DataInputStream;
 import java.io.DataOutputStream;
+import java.io.EOFException;
 import java.io.IOException;
 import java.net.Socket;
 
@@ -20,17 +21,14 @@ public class MonoThreadClientHandler implements Runnable {
 
     @Override
     public void run() {
-        try {
-            DataOutputStream out = new DataOutputStream(client.getOutputStream());
-            DataInputStream in = new DataInputStream(client.getInputStream());
+        try (DataOutputStream out = new DataOutputStream(client.getOutputStream());
+             DataInputStream in = new DataInputStream(client.getInputStream())) {
             while (!client.isClosed()) {
                 String entry = in.readUTF();
                 presenter.printMessage(entry);
                 out.writeUTF("Server reply - " + entry + " - OK");
                 out.flush();
             }
-            in.close();
-            out.close();
             client.close();
         } catch (IOException e) {
             e.printStackTrace();
