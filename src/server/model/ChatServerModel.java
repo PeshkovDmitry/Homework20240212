@@ -2,11 +2,9 @@ package server.model;
 
 import server.presenter.Presenter;
 
-import java.io.*;
-import java.net.ServerSocket;
-import java.net.Socket;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.FileWriter;
 
 public class ChatServerModel implements Model {
 
@@ -14,40 +12,27 @@ public class ChatServerModel implements Model {
 
     private Presenter presenter;
 
-    private ServerSocket server;
+    private MultiThreadServer multiThreadServer;
 
     @Override
     public boolean isActive() {
-        return !server.isClosed();
+        if (multiThreadServer!= null) return false;
+        return !multiThreadServer.isClosed();
     }
 
     @Override
     public void startServer() {
-        MultiThreadServer multiThreadServer = new MultiThreadServer(presenter);
-        new Thread(multiThreadServer).start();
-        server = multiThreadServer.getServerSocket();
-
-
-//                    socket = serverSocket.accept();
-//                    presenter.printMessage("Кто-то подключился!");
-//                    BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-//                    BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-//                    String word = in.readLine();
-//                    System.out.println("Что-то пришло");
-//                    presenter.printMessage(word);
-//                    out.write("You say " + word);
-//                    out.flush();
-//                    in.close();
-//                    out.close();
-//                    serverSocket.close();
+        multiThreadServer = new MultiThreadServer(presenter);
+        Thread thread = new Thread(multiThreadServer);
+        thread.start();
     }
 
     @Override
     public void stopServer() {
-        try {
-            server.close();
+        if (isActive()) {
+            multiThreadServer.close();
             presenter.printMessage("Сервер остановлен!");
-        } catch (IOException e) {}
+        }
     }
 
     @Override

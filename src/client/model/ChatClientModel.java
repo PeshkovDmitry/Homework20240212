@@ -30,16 +30,18 @@ public class ChatClientModel implements Model{
 
     @Override
     public void sendMessage(String message) {
-        try {
-//            BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-            BufferedWriter out = new BufferedWriter(new OutputStreamWriter(socket.getOutputStream()));
-            out.write(message);
-            out.flush();
-//            String serverWord = in.readLine();
-//            presenter.printMessage(serverWord);
-//            socket.close();
-//            in.close();
-//            out.close();
+        try (
+                DataOutputStream oos = new DataOutputStream(socket.getOutputStream());
+                DataInputStream ois = new DataInputStream(socket.getInputStream())) {
+            int i = 0;
+            while (i < 5) {
+                oos.writeUTF("clientCommand " + i);
+                oos.flush();
+                String in = ois.readUTF();
+//                System.out.println(in);
+                presenter.printMessage(in);
+                i++;
+            }
         } catch (IOException e) {
             presenter.printMessage("Не удалось отправить сообщение");
         }

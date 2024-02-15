@@ -9,31 +9,29 @@ import java.net.Socket;
 
 public class MonoThreadClientHandler implements Runnable {
 
-    private Socket clientDialog;
+    private Socket client;
 
     private Presenter presenter;
 
     public MonoThreadClientHandler(Socket client, Presenter presenter) {
-        this.clientDialog = client;
+        this.client = client;
         this.presenter = presenter;
     }
 
     @Override
     public void run() {
-
         try {
-            DataOutputStream out = new DataOutputStream(clientDialog.getOutputStream());
-            DataInputStream in = new DataInputStream(clientDialog.getInputStream());
-            while (!clientDialog.isClosed()) {
+            DataOutputStream out = new DataOutputStream(client.getOutputStream());
+            DataInputStream in = new DataInputStream(client.getInputStream());
+            while (!client.isClosed()) {
                 String entry = in.readUTF();
-                System.out.println(entry);
-                presenter.printMessage("READ from clientDialog message - " + entry);
+                presenter.printMessage(entry);
                 out.writeUTF("Server reply - " + entry + " - OK");
                 out.flush();
             }
             in.close();
             out.close();
-            clientDialog.close();
+            client.close();
         } catch (IOException e) {
             e.printStackTrace();
         }

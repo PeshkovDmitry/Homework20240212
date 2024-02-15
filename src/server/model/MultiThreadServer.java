@@ -10,9 +10,7 @@ import java.util.concurrent.Executors;
 
 public class MultiThreadServer implements Runnable {
 
-    private static final int PORT = 4004;
-
-    private ExecutorService executeIt = Executors.newFixedThreadPool(2);
+    private static final int PORT = 3345;
 
     private ServerSocket server;
 
@@ -34,16 +32,24 @@ public class MultiThreadServer implements Runnable {
         }
     }
 
+    public boolean isClosed() {
+        return server.isClosed();
+    }
+
     @Override
     public void run() {
         try {
+            ExecutorService executeIt = Executors.newFixedThreadPool(2);
             server = new ServerSocket(PORT);
             presenter.printMessage("Сервер запущен!");
             while (!server.isClosed()) {
                 Socket client = server.accept();
+                presenter.printMessage("Кто-то подключился!");
                 executeIt.execute(new MonoThreadClientHandler(client, presenter));
             }
             executeIt.shutdown();
+            server.close();
+            presenter.printMessage("Сервер остановлен!");
         } catch (IOException e) {
             e.printStackTrace();
         }

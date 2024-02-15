@@ -4,14 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Начал прорабатывать реализацию через сокеты">
-      <change afterPath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/server/model/MultiThreadServer.java" afterDir="false" />
+    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Продолжаю прорабатывать реализацию через сокеты">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/view/ChatClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/ChatClientView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/model/ChatServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/ChatServerModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/model/MultiThreadServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/MultiThreadServer.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -139,7 +138,14 @@
       <option name="project" value="LOCAL" />
       <updated>1707858588141</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Продолжаю прорабатывать реализацию через сокеты">
+      <created>1707940569104</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1707940569104</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -161,6 +167,7 @@
     <MESSAGE value="Осталось сделать историю переписки" />
     <MESSAGE value="Функционал реализован" />
     <MESSAGE value="Начал прорабатывать реализацию через сокеты" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начал прорабатывать реализацию через сокеты" />
+    <MESSAGE value="Продолжаю прорабатывать реализацию через сокеты" />
+    <option name="LAST_COMMIT_MESSAGE" value="Продолжаю прорабатывать реализацию через сокеты" />
   </component>
 </project>

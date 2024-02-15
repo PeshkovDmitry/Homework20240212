@@ -80,7 +80,7 @@ public class ChatClientView extends JFrame implements View {
         public SettingsWindow() {
             super(new GridLayout(2,3));
             JTextField hostField = new JTextField("127.0.0.1");
-            JTextField portField = new JTextField("4004");
+            JTextField portField = new JTextField("3345");
             JTextField nickNameField = new JTextField("petya");
             JPasswordField passwordField = new JPasswordField("password");
             JButton loginButton = new JButton("login");
