@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Добился ответа от сервера">
+    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Добился поддержания соединения">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/view/ChatServerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/view/ChatServerView.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,7 +151,14 @@
       <option name="project" value="LOCAL" />
       <updated>1708028425530</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Добился поддержания соединения">
+      <created>1708031295299</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1708031295299</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -174,6 +182,7 @@
     <MESSAGE value="Начал прорабатывать реализацию через сокеты" />
     <MESSAGE value="Продолжаю прорабатывать реализацию через сокеты" />
     <MESSAGE value="Добился ответа от сервера" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добился ответа от сервера" />
+    <MESSAGE value="Добился поддержания соединения" />
+    <option name="LAST_COMMIT_MESSAGE" value="Добился поддержания соединения" />
   </component>
 </project>

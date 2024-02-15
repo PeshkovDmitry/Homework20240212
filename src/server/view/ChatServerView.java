@@ -53,7 +53,7 @@ public class ChatServerView extends JFrame implements View {
 
     @Override
     public void printMessage(String message) {
-        if (message != null && !message.isEmpty()) {
+        if (message != null && !message.trim().isEmpty()) {
             if (textArea.getText().isEmpty()) {
                 textArea.append(message);
             } else {

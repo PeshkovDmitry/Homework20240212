@@ -13,6 +13,8 @@ public class ChatClientModel implements Model{
 
     private String currentMessage = "Initial message";
 
+    private String oldMessage;
+
     @Override
     public boolean connect(String host, int port) {
         try {
@@ -24,7 +26,11 @@ public class ChatClientModel implements Model{
                     try (DataOutputStream oos = new DataOutputStream(socket.getOutputStream());
                          DataInputStream ois = new DataInputStream(socket.getInputStream())) {
                         while (true) {
-                            oos.writeUTF(currentMessage);
+                            String message = (currentMessage.equals(oldMessage)
+                                    ? " "
+                                    : currentMessage);
+                            oldMessage = currentMessage;
+                            oos.writeUTF(message);
                             oos.flush();
                             Thread.sleep(100);
                             String in = ois.readUTF();

@@ -26,7 +26,11 @@ public class MonoThreadClientHandler implements Runnable {
             while (!client.isClosed()) {
                 String entry = in.readUTF();
                 presenter.printMessage(entry);
-                out.writeUTF("Server reply - " + entry + " - OK");
+                String responce = (entry.trim().isEmpty()
+                        ? " "
+                        : "Server reply - " + entry + " - OK");
+                out.writeUTF(responce);
+                System.out.println(responce);
                 out.flush();
             }
             client.close();

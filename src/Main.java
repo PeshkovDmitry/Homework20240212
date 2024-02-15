@@ -9,7 +9,7 @@ public class Main {
 
         new ChatServer();
         new ChatClient();
-//        new ChatClient();
+        new ChatClient();
 
     }
 
