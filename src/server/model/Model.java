@@ -12,8 +12,5 @@ public interface Model {
 
     void setPresenter(Presenter presenter);
 
-    String getHistory();
-
-    void addToHistory(String message);
 
 }

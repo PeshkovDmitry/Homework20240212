@@ -4,14 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Начал прорабатывать реализацию через сокеты">
+    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Почти сделал клиентскую часть (осталось подумать, переписывать ли всю переписку, что проще, или выводить лишь новые сообщения, что сложнее, но правильнее)">
+      <change afterPath="$PROJECT_DIR$/history.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/model/engine/ServerEngine.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/model/repository/FileRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/server/model/repository/Repository.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/Model.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/presenter/ChatClientPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/presenter/ChatClientPresenter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/presenter/Presenter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/view/ChatClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/ChatClientView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/View.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/model/ChatServerModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/ChatServerModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/engine/MonoThreadClientHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/model/MultiThreadServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/engine/MultiThreadServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/presenter/ChatServerPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/presenter/ChatServerPresenter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -48,17 +53,21 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/Дима/Homework20240212&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "last_opened_file_path": "C:/Users/Дима/Homework20240212"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="server.model" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="server.model.engine" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="" />
@@ -147,7 +156,15 @@
       <option name="project" value="LOCAL" />
       <updated>1707858588141</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Почти сделал клиентскую часть (осталось подумать, переписывать ли всю переписку, что проще, или выводить лишь новые сообщения, что сложнее, но правильнее)">
+      <option name="closed" value="true" />
+      <created>1708070750418</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1708070750418</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -162,6 +179,7 @@
     </option>
   </component>
   <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Начальный коммит" />
     <MESSAGE value="Продумал, как мог, интерфейсы" />
     <MESSAGE value="Начал прорабатывать логику клиента" />
@@ -169,6 +187,7 @@
     <MESSAGE value="Осталось сделать историю переписки" />
     <MESSAGE value="Функционал реализован" />
     <MESSAGE value="Начал прорабатывать реализацию через сокеты" />
-    <option name="LAST_COMMIT_MESSAGE" value="Начал прорабатывать реализацию через сокеты" />
+    <MESSAGE value="Почти сделал клиентскую часть (осталось подумать, переписывать ли всю переписку, что проще, или выводить лишь новые сообщения, что сложнее, но правильнее)" />
+    <option name="LAST_COMMIT_MESSAGE" value="Почти сделал клиентскую часть (осталось подумать, переписывать ли всю переписку, что проще, или выводить лишь новые сообщения, что сложнее, но правильнее)" />
   </component>
 </project>

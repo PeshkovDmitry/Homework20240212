@@ -4,6 +4,9 @@ import client.presenter.Presenter;
 
 import java.io.*;
 import java.net.Socket;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 public class ChatClientModel implements Model{
 
@@ -26,7 +29,8 @@ public class ChatClientModel implements Model{
                 public void run() {
                     try (DataOutputStream oos = new DataOutputStream(socket.getOutputStream());
                          DataInputStream ois = new DataInputStream(socket.getInputStream())) {
-                        while (true) {
+                        boolean work = true;
+                        while (work) {
                             String message = (currentMessage.equals(oldMessage)
                                     ? " "
                                     : currentMessage);
@@ -39,9 +43,12 @@ public class ChatClientModel implements Model{
                                 oos.close();
                                 ois.close();
                                 socket.close();
+                                presenter.printMessage("Сервер разорвал соединение");
                                 presenter.setConnected(false);
+                                work = false;
+                            } else {
+                                presenter.printMessage(in);
                             }
-                            presenter.printMessage(in);
                             Thread.sleep(100);
                         }
                     } catch (IOException | InterruptedException e) {
@@ -64,7 +71,10 @@ public class ChatClientModel implements Model{
 
     @Override
     public void sendMessage(String message) {
-        currentMessage = presenter.getNickname() + ": " + message;
+        DateFormat dateFormat = new SimpleDateFormat("dd.MM.yyyy HH:mm:ss");
+        Date date = new Date();
+        System.out.println();
+        currentMessage = presenter.getNickname() + " " + dateFormat.format(date) + ": " + message;
     }
 
 }

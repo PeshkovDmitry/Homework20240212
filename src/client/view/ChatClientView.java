@@ -48,20 +48,13 @@ public class ChatClientView extends JFrame implements View {
 
     @Override
     public void printMessage(String message) {
-        if (message != null && !message.trim().isEmpty()) {
-            if (textArea.getText().isEmpty()) {
-                textArea.append(message);
-            } else {
-                textArea.append("\n\r" + message);
-            }
-        }
+        textArea.setText(message);
     }
 
     @Override
     public void setPresenter(Presenter presenter) {
         this.presenter = presenter;
     }
-
 
     @Override
     public void setConnected(boolean connected) {

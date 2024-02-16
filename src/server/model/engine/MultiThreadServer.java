@@ -1,5 +1,6 @@
-package server.model;
+package server.model.engine;
 
+import server.model.repository.Repository;
 import server.presenter.Presenter;
 
 import java.io.IOException;
@@ -8,7 +9,7 @@ import java.net.Socket;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-public class MultiThreadServer implements Runnable {
+public class MultiThreadServer implements ServerEngine {
 
     private static final int PORT = 3345;
 
@@ -16,22 +17,31 @@ public class MultiThreadServer implements Runnable {
 
     private Presenter presenter;
 
-    public MultiThreadServer(Presenter presenter) {
+    private Repository repository;
+
+    private boolean stoppingServer = false;
+
+    public MultiThreadServer(Presenter presenter, Repository repository) {
         this.presenter = presenter;
+        this.repository = repository;
     }
 
-    public ServerSocket getServerSocket() {
-        return server;
-    }
-
-    public void close() {
+    @Override
+    public void stop() {
         try {
+            stoppingServer = true;
             server.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
 
+    @Override
+    public boolean isStoppingServer() {
+        return stoppingServer;
+    }
+
+    @Override
     public boolean isClosed() {
         return server.isClosed();
     }
@@ -44,14 +54,11 @@ public class MultiThreadServer implements Runnable {
             presenter.printMessage("Сервер запущен!");
             while (!server.isClosed()) {
                 Socket client = server.accept();
-                presenter.printMessage("Кто-то подключился!");
-                executeIt.execute(new MonoThreadClientHandler(client, presenter));
+                executeIt.execute(new MonoThreadClientHandler(client, presenter, repository, this));
             }
             executeIt.shutdown();
             server.close();
             presenter.printMessage("Сервер остановлен!");
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        } catch (IOException e) {}
     }
 }

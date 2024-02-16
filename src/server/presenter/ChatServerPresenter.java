@@ -16,7 +16,6 @@ public class ChatServerPresenter implements Presenter{
         this.view.setPresenter(this);
     }
 
-
     @Override
     public void onButtonClicked() {
         view.showWindow();
@@ -37,41 +36,4 @@ public class ChatServerPresenter implements Presenter{
         view.printMessage(message);
     }
 
-
-//
-//
-//    public void stop() {
-//        run = false;
-//        for (Client c: subscribers) {
-//            c.disconnect();
-//        }
-//        view.clear();
-//    }
-//
-//
-//    public boolean checkRunning() {
-//        return run;
-//    }
-//
-//
-//    public void publish(String message) {
-//        if (message != null && !message.isEmpty()) {
-//            view.printMessage(message);
-//            model.addToHistory(message);
-//            for (Client c: subscribers) {
-//                c.printMessage(message);
-//            }
-//        }
-//    }
-//
-//
-//    public void addSubscriber(Client client) {
-//        subscribers.add(client);
-//        publish(client.getName() + " подключился к беседе");
-//    }
-//
-//
-//    public String getHistory() {
-//        return model.getHistory();
-//    }
 }
