@@ -9,6 +9,8 @@ public class ChatClientPresenter implements Presenter {
 
     private View view;
 
+    private String nickName;
+
     public ChatClientPresenter(View view, Model model) {
         this.model = model;
         this.model.setPresenter(this);
@@ -23,16 +25,8 @@ public class ChatClientPresenter implements Presenter {
 
     @Override
     public boolean connect(String host, String port, String nickName, String password) {
+        this.nickName = nickName;
         return model.connect(host, Integer.parseInt(port));
-//        if (server.checkRunning() && server.checkClient(nickName, password)) {
-//            view.hideSettingsWindow();
-//            view.printMessage(server.getHistory());
-//            view.printMessage("Вы успешно подключились!");
-////            server.addSubscriber(client);
-//            isRunning = true;
-//        } else {
-//            view.printMessage("Не удалось подключиться к серверу");
-//        }
     }
 
     @Override
@@ -45,17 +39,14 @@ public class ChatClientPresenter implements Presenter {
         model.sendMessage(message);
     }
 
-//    @Override
-//    public void printMessage(String message) {
-//        if (isRunning) {
-//            view.printMessage(message);
-//        }
-//    }
-//
-//    @Override
-//    public void disconnect() {
-//        view.clear();
-//        view.showSettingsWindow();
-//        isRunning = false;
-//    }
+    @Override
+    public String getNickname() {
+        return nickName;
+    }
+
+    @Override
+    public void setConnected(boolean connected) {
+        view.setConnected(connected);
+    }
+
 }

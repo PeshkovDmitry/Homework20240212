@@ -8,16 +8,10 @@ public interface Presenter {
 
     void printMessage(String message);
 
-
-//    void run();
-//
-//    void connect();
-//
     void sendMessage(String message);
-//
-//    void printMessage(String message);
-//
-//    void disconnect();
 
+    String getNickname();
+
+    void setConnected(boolean connected);
 
 }

@@ -10,8 +10,6 @@ public interface View {
 
     void setPresenter(Presenter presenter);
 
-    void showSettingsWindow();
-
-    void hideSettingsWindow();
+    void setConnected(boolean connected);
 
 }

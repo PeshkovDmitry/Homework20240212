@@ -4,12 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Добился поддержания соединения">
+    <list default="true" id="6baa8c05-97a2-4b5d-9a32-b8644af26f68" name="Changes" comment="Начал прорабатывать реализацию через сокеты">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/ChatClientModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/model/MonoThreadClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/view/ChatServerView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/view/ChatServerView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/model/Model.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/model/Model.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/presenter/ChatClientPresenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/presenter/ChatClientPresenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/presenter/Presenter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/presenter/Presenter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/view/ChatClientView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/ChatClientView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/view/View.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/view/View.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,6 +24,14 @@
         <option value="Interface" />
         <option value="Class" />
       </list>
+    </option>
+  </component>
+  <component name="Git.Pull.Settings">
+    <option name="OPTIONS">
+      <set>
+        <option value="REBASE" />
+        <option value="NO_VERIFY" />
+      </set>
     </option>
   </component>
   <component name="Git.Settings">
@@ -137,28 +147,7 @@
       <option name="project" value="LOCAL" />
       <updated>1707858588141</updated>
     </task>
-    <task id="LOCAL-00008" summary="Продолжаю прорабатывать реализацию через сокеты">
-      <created>1707940569104</created>
-      <option name="number" value="00008" />
-      <option name="presentableId" value="LOCAL-00008" />
-      <option name="project" value="LOCAL" />
-      <updated>1707940569104</updated>
-    </task>
-    <task id="LOCAL-00009" summary="Добился ответа от сервера">
-      <created>1708028425530</created>
-      <option name="number" value="00009" />
-      <option name="presentableId" value="LOCAL-00009" />
-      <option name="project" value="LOCAL" />
-      <updated>1708028425530</updated>
-    </task>
-    <task id="LOCAL-00010" summary="Добился поддержания соединения">
-      <created>1708031295299</created>
-      <option name="number" value="00010" />
-      <option name="presentableId" value="LOCAL-00010" />
-      <option name="project" value="LOCAL" />
-      <updated>1708031295299</updated>
-    </task>
-    <option name="localTasksCounter" value="11" />
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -180,9 +169,6 @@
     <MESSAGE value="Осталось сделать историю переписки" />
     <MESSAGE value="Функционал реализован" />
     <MESSAGE value="Начал прорабатывать реализацию через сокеты" />
-    <MESSAGE value="Продолжаю прорабатывать реализацию через сокеты" />
-    <MESSAGE value="Добился ответа от сервера" />
-    <MESSAGE value="Добился поддержания соединения" />
-    <option name="LAST_COMMIT_MESSAGE" value="Добился поддержания соединения" />
+    <option name="LAST_COMMIT_MESSAGE" value="Начал прорабатывать реализацию через сокеты" />
   </component>
 </project>

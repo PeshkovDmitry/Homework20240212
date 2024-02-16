@@ -10,6 +10,4 @@ public interface Model {
 
     void sendMessage(String message);
 
-    String getFormattedMessage(String message, String nickName);
-
 }

@@ -26,7 +26,7 @@ public class ChatClientView extends JFrame implements View {
                 HORIZONTAL_POSITION + new Random().nextInt(50),
                 VERTICAL_POSITION + new Random().nextInt(50)
         );
-        setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        setDefaultCloseOperation(EXIT_ON_CLOSE);
         setResizable(false);
         setTitle("Chat client");
 
@@ -62,18 +62,17 @@ public class ChatClientView extends JFrame implements View {
         this.presenter = presenter;
     }
 
-    @Override
-    public void showSettingsWindow() {
-        settingsWindow.setVisible(true);
-        sendMessagePanel.disableButton();
-    }
 
     @Override
-    public void hideSettingsWindow() {
-        settingsWindow.setVisible(false);
-        sendMessagePanel.enableButton();
+    public void setConnected(boolean connected) {
+        if (connected) {
+            settingsWindow.setVisible(false);
+            sendMessagePanel.enableButton();
+        } else {
+            settingsWindow.setVisible(true);
+            sendMessagePanel.disableButton();
+        }
     }
-
 
     private class SettingsWindow extends JPanel {
 
@@ -93,11 +92,7 @@ public class ChatClientView extends JFrame implements View {
                                 passwordField.getPassword().toString()
                         );
                 setVisible(!connected);
-                if (connected) {
-                    sendMessagePanel.enableButton();
-                } else {
-                    sendMessagePanel.disableButton();
-                }
+                setConnected(connected);
             });
             add(hostField);
             add(portField);

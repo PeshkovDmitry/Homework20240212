@@ -11,15 +11,16 @@ public class ChatClientModel implements Model{
 
     private Presenter presenter;
 
-    private String currentMessage = "Initial message";
+    private String currentMessage = "";
 
-    private String oldMessage;
+    private String oldMessage = "";
 
     @Override
     public boolean connect(String host, int port) {
         try {
             socket =  new Socket(host, port);
             presenter.printMessage("Вы успешно подключились!");
+            currentMessage = presenter.getNickname() + " успешно подключился к беседе";
             new Thread(new Runnable() {
                 @Override
                 public void run() {
@@ -34,6 +35,12 @@ public class ChatClientModel implements Model{
                             oos.flush();
                             Thread.sleep(100);
                             String in = ois.readUTF();
+                            if (in.equals("exit")) {
+                                oos.close();
+                                ois.close();
+                                socket.close();
+                                presenter.setConnected(false);
+                            }
                             presenter.printMessage(in);
                             Thread.sleep(100);
                         }
@@ -43,8 +50,6 @@ public class ChatClientModel implements Model{
                     }
                 }
             }).start();
-
-
             return true;
         } catch (IOException e) {
             presenter.printMessage("Не удалось подключиться к серверу");
@@ -59,11 +64,7 @@ public class ChatClientModel implements Model{
 
     @Override
     public void sendMessage(String message) {
-        currentMessage = message;
+        currentMessage = presenter.getNickname() + ": " + message;
     }
 
-    @Override
-    public String getFormattedMessage(String message, String nickName) {
-        return nickName + ": " + message;
-    }
 }
